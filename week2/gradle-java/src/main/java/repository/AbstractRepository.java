@@ -27,17 +27,17 @@ public class AbstractRepository <T extends Identifiable<String>, String> impleme
     }
 
     @Override
-    public void update(T elem, String barCode) {
-        if(elements.containsKey(barCode))
+    public void update(T elem, String id) {
+        if(elements.containsKey(id))
             elements.put(elem.getId(),elem);
         else
             throw new RuntimeException("Element does not exist");
     }
 
     @Override
-    public T findByBarCode(String barCode) {
-        if(elements.containsKey(barCode))
-            return elements.get(barCode);
+    public T findByBarCode(String id) {
+        if(elements.containsKey(id))
+            return elements.get(id);
         else
             throw new RuntimeException("Element does not exist");
     }

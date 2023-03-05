@@ -27,8 +27,8 @@ public class Product implements Identifiable<String>, Serializable {
     }
 
     @Override
-    public void setId(String barCode) {
-        this.barCode = barCode;
+    public void setId(String id) {
+        this.barCode = id;
     }
 
     public String getDescription() {
