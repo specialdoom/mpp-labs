@@ -1,1 +1,16 @@
 /.idea/
+main/.vs/
+bin
+obj
+week2/csharp/main/.vs/csharp/DesignTimeBuild/.dtbcache.v2
+week2/csharp/main/.vs/csharp/FileContentIndex/386fa000-effc-45ea-987a-441d14c09399.vsidx
+week2/csharp/main/.vs/csharp/FileContentIndex/5a2859dd-e634-44fe-bfc8-7ed917d25acc.vsidx
+week2/csharp/main/.vs/csharp/FileContentIndex/974dc7a3-26cb-4a87-8f16-4b1b28bed61e.vsidx
+week2/csharp/main/.vs/csharp/FileContentIndex/eb1ee169-810b-43f5-a0f6-9222f8a9b716.vsidx
+week2/csharp/main/.vs/csharp/FileContentIndex/read.lock
+week2/csharp/main/.vs/csharp/v17/.futdcache.v2
+week2/csharp/main/.vs/csharp/v17/.suo
+week2/csharp/main/.vs/csharp/v17/TestStore/0/000.testlog
+week2/csharp/main/.vs/csharp/v17/TestStore/0/testlog.manifest
+week2/csharp/main/.vs/ProjectEvaluation/csharp.metadata.v6.1
+week2/csharp/main/.vs/ProjectEvaluation/csharp.projects.v6.1
