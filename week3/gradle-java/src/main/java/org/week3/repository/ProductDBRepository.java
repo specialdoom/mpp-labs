@@ -21,9 +21,7 @@ public class ProductDBRepository implements ProductRepository {
         String sql = "INSERT INTO Products(id, description, price, count) VALUES(?,?,?,?)";
 
         try {
-            Connection connection =  jdbcUtils.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = jdbcUtils.getConnection().prepareStatement(sql);
 
             preparedStatement.setString(1, element.getId());
             preparedStatement.setString(2, element.getDescription());
@@ -32,7 +30,7 @@ public class ProductDBRepository implements ProductRepository {
 
             preparedStatement.executeUpdate();
 
-            connection.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             System.out.println("Error: adding element failed " + e);
         }
@@ -47,9 +45,7 @@ public class ProductDBRepository implements ProductRepository {
                 + "WHERE id = ?";
 
         try {
-            Connection connection =  jdbcUtils.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = jdbcUtils.getConnection().prepareStatement(sql);
 
             preparedStatement.setString(1, element.getId());
             preparedStatement.setString(2, element.getDescription());
@@ -59,7 +55,7 @@ public class ProductDBRepository implements ProductRepository {
 
             preparedStatement.executeUpdate();
 
-            connection.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             System.out.println("Error: updating element failed " + e);
         }
@@ -72,10 +68,9 @@ public class ProductDBRepository implements ProductRepository {
         List<Product> products = new ArrayList<>();
 
         try {
-            Connection connection = jdbcUtils.getConnection();
+            PreparedStatement preparedStatement = jdbcUtils.getConnection().prepareStatement(sql);
 
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 Product product = new Product(resultSet.getString("id"), resultSet.getString("description"), resultSet.getDouble("price"), resultSet.getInt("count"));
@@ -83,7 +78,7 @@ public class ProductDBRepository implements ProductRepository {
                 products.add(product);
             }
 
-            connection.close();
+            preparedStatement.close();
 
             return products;
         } catch(SQLException e) {
@@ -98,14 +93,12 @@ public class ProductDBRepository implements ProductRepository {
         String sql = "SELECT * FROM Products WHERE id = ?";
 
         try {
-            Connection connection = jdbcUtils.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = jdbcUtils.getConnection().prepareStatement(sql);
             preparedStatement.setString(1, id);
 
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-            connection.close();
+            preparedStatement.close();
 
             return new Product(resultSet.getString("id"), resultSet.getString("description"), resultSet.getDouble("price"), resultSet.getInt("count"));
         } catch(SQLException e) {
@@ -128,7 +121,7 @@ public class ProductDBRepository implements ProductRepository {
             preparedStatement.setDouble(1, min);
             preparedStatement.setDouble(2, max);
 
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 Product product = new Product(resultSet.getString("id"), resultSet.getString("description"), resultSet.getDouble("price"), resultSet.getInt("count"));
