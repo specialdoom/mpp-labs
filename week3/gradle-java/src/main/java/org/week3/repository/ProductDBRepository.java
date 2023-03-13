@@ -37,9 +37,8 @@ public class ProductDBRepository implements ProductRepository {
     }
 
     @Override
-    public void update(String s, Product element) {
-        String sql = "UPDATE Products SET id = ? ,"
-                + "description = ? , "
+    public void update(String id, Product element) {
+        String sql = "UPDATE Products SET description = ? ,"
                 + "price = ? , "
                 + "count = ? "
                 + "WHERE id = ?";
@@ -47,11 +46,10 @@ public class ProductDBRepository implements ProductRepository {
         try {
             PreparedStatement preparedStatement = jdbcUtils.getConnection().prepareStatement(sql);
 
-            preparedStatement.setString(1, element.getId());
-            preparedStatement.setString(2, element.getDescription());
-            preparedStatement.setDouble(3, element.getPrice());
-            preparedStatement.setInt(4, element.getCount());
-            preparedStatement.setString(5, element.getId());
+            preparedStatement.setString(1, element.getDescription());
+            preparedStatement.setDouble(2, element.getPrice());
+            preparedStatement.setInt(3, element.getCount());
+            preparedStatement.setString(4, id);
 
             preparedStatement.executeUpdate();
 
