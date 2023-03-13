@@ -1,0 +1,11 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^8.2.0",
+    "sqlite3": "^5.1.4"
+  }
+}
